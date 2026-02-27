@@ -3,12 +3,25 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HelloModule } from './hello/hello.module';
 import { UserModule } from './user/user.module';
+import { ConfigModule } from '@nestjs/config';
+// import * as joi from 'joi';
+import appConfig from './config/app.config';
 
 @Module({
-  imports: [HelloModule, UserModule],
+  imports: [HelloModule, UserModule,
+    ConfigModule.forRoot({
+      envFilePath: '.env', // specify the path to your .env file
+      isGlobal: true, // this will make the config module available globally, so we don't need to import it in other modules
+      // validationSchema: joi.object({
+      //   APP_NAME: joi.string().default('My NestJS App'),
+      // }),
+      load : [appConfig],
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
-})
+  
+}) 
 export class AppModule {}
 
 
