@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { UserService } from './user.service';
-import { UserController } from './user.controller';
-import { HelloModule } from 'src/hello/hello.module';
+import { Module } from "@nestjs/common";
+import { UserService } from "./user.service";
+import { UserController } from "./user.controller";
+import { HelloModule } from "src/practice-0/hello.module";
 
 @Module({
   providers: [UserService],
