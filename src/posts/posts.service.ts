@@ -54,6 +54,38 @@ export class PostsService {
             Math.max(...this.posts.map(post => post.id)) + 1 : 1;
         }
 
+        updatePost(id:number,updatedPostData : Partial<Omit <Post ,'id'| 'createdAt'>>) : Post {
+
+            const currPostIndex = this.posts.findIndex((post)=>post.id===id);
+
+            if(currPostIndex === -1) throw new NotFoundException('Post not found');
+
+            const currPost = this.posts[currPostIndex];
+             const updatedPost : Post = {
+                ...currPost,
+                ...updatedPostData,
+                updatedAt : new Date()
+             }
+
+        // IMPORTANT: Save it back to the array!
+           this.posts[currPostIndex] = updatedPost;
+           return updatedPost;
+        }
+
+        removePost(id:number)  {
+            const currPostIndex = this.posts.findIndex((post)=>post.id===id);
+
+            if(currPostIndex === -1) throw new NotFoundException('Post not found');
+
+            // const removedPost = this.posts[currPostIndex];
+            this.posts.splice(currPostIndex,1);
+
+            return {message: "Post removed successfully"};
+
+        }
+
+
+
 
 
 }
