@@ -103,7 +103,12 @@ CREATE NEW DATABASE:
 Then, define your models in prisma/schema.prisma and run prisma migrate dev to apply your schema.
 
 -----------------
-4). Set the generator output path#
+
+    
+4). npx prisma migrate dev --name init  // to create a new migration with the name "init" and apply it to your database.
+
+
+Set the generator output path#
 Specify your output path for the generated Prisma client either by passing --output ../src/generated/prisma during prisma init, or directly in your Prisma schema:
 
 
@@ -116,13 +121,12 @@ generator client {
 6).npx prisma generate
 7).pnpm install @prisma/adapter-neon 
 
-8).command :  nest generate service prisma && nest generate module prisma
----terminal output after running above command---
-CREATE src/prisma/prisma.service.spec.ts (460 bytes)
-CREATE src/prisma/prisma.service.ts (90 bytes)
-UPDATE src/app.module.ts (1172 bytes)
-CREATE src/prisma/prisma.module.ts (83 bytes)
-UPDATE src/app.module.ts (1245 bytes)
+8).command :  nest generate service database && nest generate module database
+CREATE src/database/database.service.spec.ts (474 bytes)
+CREATE src/database/database.service.ts (92 bytes)
+UPDATE src/app.module.ts (1180 bytes)
+CREATE src/database/database.module.ts (85 bytes)
+UPDATE src/app.module.ts (1261 bytes)
 ----
 
 
@@ -152,3 +156,6 @@ prisma/migrations/
     └─ migration.sql
 
 Your database is now in sync with your schema.
+
+
+auto crud code : nest g resource CrudExample

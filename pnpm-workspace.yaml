@@ -1,4 +1,1 @@
-ignoredBuiltDependencies:
-  - '@nestjs/core'
-  
-  - unrs-resolver
+

@@ -1,17 +1,18 @@
 import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { HelloModule } from "./practice-0/hello.module";
-import { UserModule } from "./practice-1/user.module";
 import { ConfigModule } from "@nestjs/config";
 import { PostsModule } from "./posts/posts.module";
+import { DatabaseService } from './database/database.service';
+import { DatabaseModule } from './database/database.module';
+
+
 // import * as joi from 'joi';
 import appConfig from "./config/app.config";
 
+
 @Module({
   imports: [
-    HelloModule,
-    UserModule,
     ConfigModule.forRoot({
       envFilePath: ".env", // specify the path to your .env file
       isGlobal: true, // this will make the config module available globally, so we don't need to import it in other modules
@@ -21,9 +22,12 @@ import appConfig from "./config/app.config";
       load: [appConfig],
     }),
     PostsModule,
+    DatabaseModule,
+ 
+    
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, DatabaseService ],
 })
 export class AppModule {}
 
