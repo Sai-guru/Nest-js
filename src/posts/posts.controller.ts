@@ -1,6 +1,9 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import type { Post as PostInterfaceData } from './interfaces/post.interface';
+import { CreatePostDto } from './dto/create-post.dto';
+import { UpdatePostDto } from './dto/update-post.dto';
+
 
 @Controller('posts')
 export class PostsController {
@@ -27,20 +30,25 @@ export class PostsController {
     @Post('create')
     @HttpCode(HttpStatus.CREATED) // by default post request returns 201 status code but we can also explicitly set it using this decorator
     // @HttpCode(201) // by default post request returns 201 status code but we can also explicitly set it using this decorator
-    createPost(@Body()createPostData : Omit<PostInterfaceData,'id' | 'createdAt'>) : PostInterfaceData {
+    
+    //   Before using DTOs
+    // createPost(@Body()createPostData : Omit<PostInterfaceData,'id' | 'createdAt'>) : PostInterfaceData {
+
+    //after using DTO
+        createPost(@Body()createPostData : CreatePostDto) : PostInterfaceData {
         return this.postsService.createPost(createPostData);
     }
 
     @Put(':id')
     @HttpCode(HttpStatus.OK)
-    updatePost(@Param('id', ParseIntPipe)id:number, @Body() updatedPostData : Partial<Omit<PostInterfaceData,'id' | 'createdAt'>>) : PostInterfaceData {
+    updatePost(@Param('id', ParseIntPipe)id:number, @Body() updatedPostData : UpdatePostDto) : PostInterfaceData {
         return this.postsService.updatePost(id,updatedPostData);
     }
+
 
     @Delete(':id')
     @HttpCode(HttpStatus.OK) // by default delete request returns 204 status code but we can also explicitly set it using this decorator
     removePost(@Param('id',ParseIntPipe) id:number) {
-
         if(!id) throw new Error('ID is required');
         if(id <= 0 || !Number.isInteger(id)) throw new Error('ID must be a positive integer');
         this.postsService.removePost(id);
