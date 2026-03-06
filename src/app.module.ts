@@ -3,10 +3,6 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { ConfigModule } from "@nestjs/config";
 import { PostsModule } from "./posts/posts.module";
-import { DatabaseService } from './database/database.service';
-import { DatabaseModule } from './database/database.module';
-
-
 // import * as joi from 'joi';
 import appConfig from "./config/app.config";
 
@@ -22,12 +18,9 @@ import appConfig from "./config/app.config";
       load: [appConfig],
     }),
     PostsModule,
-    DatabaseModule,
- 
-    
   ],
   controllers: [AppController],
-  providers: [AppService, DatabaseService ],
+  providers: [AppService ],
 })
 export class AppModule {}
 
