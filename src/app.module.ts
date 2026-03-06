@@ -17,10 +17,12 @@ import appConfig from "./config/app.config";
       // }),
       load: [appConfig],
     }),
+    
     PostsModule,
   ],
   controllers: [AppController],
   providers: [AppService ],
+
 })
 export class AppModule {}
 
