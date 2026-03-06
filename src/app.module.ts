@@ -4,7 +4,7 @@ import { AppService } from "./app.service";
 import { HelloModule } from "./practice-0/hello.module";
 import { UserModule } from "./practice-1/user.module";
 import { ConfigModule } from "@nestjs/config";
-import { PostsModule } from './posts/posts.module';
+import { PostsModule } from "./posts/posts.module";
 // import * as joi from 'joi';
 import appConfig from "./config/app.config";
 
