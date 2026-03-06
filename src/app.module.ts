@@ -5,6 +5,7 @@ import { ConfigModule } from "@nestjs/config";
 import { PostsModule } from "./posts/posts.module";
 // import * as joi from 'joi';
 import appConfig from "./config/app.config";
+import { TypeOrmModule } from "@nestjs/typeorm";
 
 
 @Module({
@@ -17,7 +18,14 @@ import appConfig from "./config/app.config";
       // }),
       load: [appConfig],
     }),
-    
+
+      TypeOrmModule.forRoot({
+      type: 'postgres',
+      url: process.env.DATABASE_URL,
+      autoLoadEntities: true,
+      synchronize: true, // Note: set to false in production
+      }),
+      
     PostsModule,
   ],
   controllers: [AppController],
