@@ -6,6 +6,8 @@ import { PostsModule } from "./posts/posts.module";
 // import * as joi from 'joi';
 import appConfig from "./config/app.config";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 
 @Module({
@@ -27,6 +29,8 @@ import { TypeOrmModule } from "@nestjs/typeorm";
       }),
       
     PostsModule,
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService ],
