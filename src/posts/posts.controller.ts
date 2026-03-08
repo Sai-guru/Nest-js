@@ -17,11 +17,8 @@ import { Post as PostEntity } from "./entities/posts.entity";
 import { CreatePostDto } from "./dto/create-post.dto";
 import { UpdatePostDto } from "./dto/update-post.dto";
 import { PostExistsPipe } from "./pipes/post-exists.pipes";
-import { UseGuards } from "@nestjs/common";
-import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 
 @Controller("posts")
-@UseGuards(JwtAuthGuard)
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 

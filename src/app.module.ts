@@ -6,7 +6,7 @@ import { PostsModule } from "./posts/posts.module";
 // import * as joi from 'joi';
 import appConfig from "./config/app.config";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './oauth/oauth.module';
 import { UsersModule } from './users/users.module';
 
 
@@ -29,7 +29,7 @@ import { UsersModule } from './users/users.module';
       }),
       
     PostsModule,
-    AuthModule,
+    // AuthModule,
     UsersModule,
   ],
   controllers: [AppController],

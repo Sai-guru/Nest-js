@@ -9,6 +9,7 @@ export default tseslint.config(
     ignoreDefault: true,
     ignoreDuringBuild: true
   },
+  
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   // eslintPluginPrettierRecommended,
