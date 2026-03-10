@@ -10,6 +10,7 @@ import { User } from './entities/user.entity';
   imports: [TypeOrmModule.forFeature([User])],  // this will make the User entity
     // available for dependency injection in the AuthService,
     //  allowing us to use the repository pattern
+    
     //  to interact with the database.
 })
 export class AuthModule {}
