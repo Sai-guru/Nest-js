@@ -1,11 +1,11 @@
 import { Controller, Get, Req, Res, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
-import { AuthService } from "./oauth.service";
+import { OAuthService } from "./oauth.service";
 import type { Response } from "express";
 
 @Controller("auth")
-export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+export class OAuthController {
+  constructor(private readonly authService: OAuthService) {}
 
   @Get("google")
   @UseGuards(AuthGuard("google"))

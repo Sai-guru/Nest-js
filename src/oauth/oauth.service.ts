@@ -3,7 +3,7 @@ import { JwtService } from "@nestjs/jwt";
 import { User } from "../users/entities/user.entity";
 
 @Injectable()
-export class AuthService {
+export class OAuthService {
   constructor(private readonly jwtService: JwtService) {}
 
   async login(user: User): Promise<{ access_token: string }> {
