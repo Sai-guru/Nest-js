@@ -23,6 +23,6 @@ export class Post {
   @CreateDateColumn()
   createdAt!: Date;
 
-  @UpdateDateColumn({ nullable: true })
+  @UpdateDateColumn({ nullable: true })                                            
   updatedAt?: Date;
 }

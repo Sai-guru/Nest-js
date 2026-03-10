@@ -4,14 +4,14 @@ import { JwtModule, JwtModuleOptions } from "@nestjs/jwt";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { GoogleStrategy } from "./google.strategy";
 import { OAuthController } from "./oauth.controller";
-import { UsersModule } from "../users/users.module";
+import { OAuthUsersModule } from "../oAuthUsers/users.module";
 import { OAuthService } from "./oauth.service";
 import { JwtStrategy } from "./jwt.strategy";
 
 @Module({
   imports: [
     PassportModule.register({ session: false }),
-    // UsersModule,
+    // OAuthUsersModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],

@@ -6,9 +6,9 @@ import { PostsModule } from "./posts/posts.module";
 // import * as joi from 'joi';
 import appConfig from "./config/app.config";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { OAuthModule } from './oauth/oauth.module';
-import { UsersModule } from './users/users.module';
-
+import { OAuthModule } from "./oauth/oauth.module";
+import { OAuthUsersModule } from "./oAuthUsers/users.module";
+import { AuthModule } from "./auth/auth.module";
 
 @Module({
   imports: [
@@ -21,20 +21,23 @@ import { UsersModule } from './users/users.module';
       load: [appConfig],
     }),
 
-      TypeOrmModule.forRoot({
-      type: 'postgres',
+    TypeOrmModule.forRoot({
+      type: "postgres",
       url: process.env.DATABASE_URL,
       autoLoadEntities: true,
       synchronize: true, // Note: set to false in production
-      }),
-      
+    }),
+
     PostsModule,
+    
     // OAuthModule,
-    UsersModule,
+    // OAuthUsersModule,
+
+
+    AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService ],
-
+  providers: [AppService],
 })
 export class AppModule {}
 

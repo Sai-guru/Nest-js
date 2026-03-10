@@ -10,28 +10,28 @@ import {
   Post,
   Put,
 } from "@nestjs/common";
-import { UsersService } from "./users.service";
-import { User } from "./entities/user.entity";
+import { OAuthUsersService } from "./users.service";
+import { OAuthUser } from "./entities/user.entity";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 
 @Controller("users")
-export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+export class OAuthUsersController {
+  constructor(private readonly usersService: OAuthUsersService) {}
 
   @Get("")
-  async findAll(): Promise<User[]> {
+  async findAll(): Promise<OAuthUser[]> {
     return this.usersService.findAll();
   }
 
   @Get(":id")
-  async findById(@Param("id", ParseIntPipe) id: number): Promise<User> {
+  async findById(@Param("id", ParseIntPipe) id: number): Promise<OAuthUser> {
     return this.usersService.findById(id);
   }
 
   @Post("create")
   @HttpCode(HttpStatus.CREATED)
-  async create(@Body() createUserDto: CreateUserDto): Promise<User> {
+  async create(@Body() createUserDto: CreateUserDto): Promise<OAuthUser> {
     return this.usersService.create(createUserDto);
   }
 
@@ -40,7 +40,7 @@ export class UsersController {
   async update(
     @Param("id", ParseIntPipe) id: number,
     @Body() updateUserDto: UpdateUserDto,
-  ): Promise<User> {
+  ): Promise<OAuthUser> {
     return this.usersService.update(id, updateUserDto);
   }
 
