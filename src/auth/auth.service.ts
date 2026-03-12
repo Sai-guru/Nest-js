@@ -110,7 +110,16 @@ export class AuthService {
     }
   }
 
-  //TODO - to find the user by id,email
+  //TODO - to find the user by id 
+  // todo completed successfully.....
+  async getUserById(id: number) {
+    const user = await this.userRepository.findOne({ where: { id } });
+    if (!user) {
+      throw new UnauthorizedException("User not found");
+    }
+    const {password, ...result} = user;
+    return result;
+  }
 
   private async hashPassword(password: string): Promise<string> {
     const saltRounds = 10;
