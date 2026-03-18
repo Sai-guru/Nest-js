@@ -2,6 +2,7 @@ import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { ConfigModule } from "@nestjs/config";
+import { ThrottlerModule } from "@nestjs/throttler";
 import { PostsModule } from "./posts/posts.module";
 // import * as joi from 'joi';
 import appConfig from "./config/app.config";
@@ -28,8 +29,18 @@ import { AuthModule } from "./auth/auth.module";
       synchronize: true, // Note: set to false in production
     }),
 
+    //18 march 2026 , rate-limiting
+    ThrottlerModule.forRoot({
+      throttlers: [
+        {
+          ttl: 60000,
+          limit: 5,
+        },
+      ],
+    }),
+
     PostsModule,
-    
+
     // OAuthModule,
     // OAuthUsersModule,
     AuthModule,
