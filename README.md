@@ -1,98 +1,229 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# NestJS Real-World API Template
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A practical NestJS backend template with authentication, authorization, validation, PostgreSQL, and security-first defaults.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This project is designed as a real-life starter for production-style APIs, not just a tutorial skeleton.
 
-## Description
+## Highlights
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Feature-based architecture using modules, controllers, and services.
+- Global validation with DTOs and class-validator.
+- PostgreSQL integration with TypeORM and entity auto-loading.
+- JWT authentication with access and refresh tokens.
+- Password hashing with bcrypt.
+- Role-based access control (RBAC) using guards and role decorators.
+- Route-level and auth-level throttling with NestJS Throttler.
+- Cookie parsing enabled for browser-based auth workflows.
 
-## Project setup
+## Tech Stack
 
-```bash
-$ pnpm install
+- NestJS
+- TypeScript
+- PostgreSQL
+- TypeORM
+- Passport + JWT
+- bcrypt
+- class-validator / class-transformer
+- pnpm
+
+## Current Scope
+
+Implemented and active:
+
+- Auth module (register, login, refresh, profile, admin creation)
+- Posts module (CRUD with ownership + role checks)
+- JWT guards and RBAC guards
+- Throttling and request validation
+
+Temporarily paused:
+
+- Cache and pagination implementation (partial work exists, currently disabled)
+
+## Project Structure
+
+```text
+src/
+  auth/
+    decorators/
+    dto/
+    entities/
+    guard/
+    strategies/
+    auth.controller.ts
+    auth.service.ts
+    auth.module.ts
+  posts/
+    dto/
+    entities/
+    interfaces/
+    pipes/
+    posts.controller.ts
+    posts.service.ts
+    posts.module.ts
+  oauth/
+  oAuthUsers/
+  config/
+  app.module.ts
+  main.ts
+docs/
+  auth-workflow.md
 ```
 
-## Compile and run the project
+## Getting Started
+
+### 1) Install dependencies
 
 ```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
+pnpm install
 ```
 
-## Run tests
+### 2) Configure environment
+
+Create a `.env` file in the project root using `trail.example.env` as reference.
+
+Suggested minimum:
+
+```env
+APP_NAME=nest-js-mine
+DATABASE_URL=postgres://USER:PASSWORD@HOST:5432/DB_NAME
+
+JWT_ACCESS_TOKEN_SECRET=replace-with-strong-random-value
+JWT_REFRESH_TOKEN=replace-with-strong-random-value
+
+JWT_SECRET=replace-with-strong-random-value
+JWT_EXPIRES_IN=1h
+
+GOOGLE_CLIENT_ID=optional-for-oauth
+GOOGLE_SECRET=optional-for-oauth
+GOOGLE_CALLBACK_URL=http://localhost:3000/auth/google/callback
+```
+
+### 3) Run the app
 
 ```bash
-# unit tests
-$ pnpm run test
+# dev (watch mode)
+pnpm run dev
 
-# e2e tests
-$ pnpm run test:e2e
+# build
+pnpm run build
 
-# test coverage
-$ pnpm run test:cov
+# production
+pnpm run start:prod
 ```
 
-## Deployment
+Server starts on:
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+- `http://localhost:3000`
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## Available Scripts
 
-```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
-```
+- `pnpm run dev` - Start in watch mode.
+- `pnpm run start` - Start once.
+- `pnpm run build` - Build TypeScript to `dist`.
+- `pnpm run start:prod` - Run compiled app.
+- `pnpm run lint` - Lint and autofix.
+- `pnpm run format` - Run prettier formatting.
+- `pnpm run test` - Unit tests.
+- `pnpm run test:e2e` - End-to-end tests.
+- `pnpm run test:cov` - Test coverage.
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## Validation and DTO Strategy
 
-## Resources
+Global `ValidationPipe` is enabled in `main.ts` with:
 
-Check out a few resources that may come in handy when working with NestJS:
+- `whitelist: true`
+- `forbidNonWhitelisted: true`
+- `transform: true`
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+This enforces strict API payload contracts and automatically transforms incoming data to DTO classes.
 
-## Support
+## Authentication and Authorization
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Auth flow
 
-## Stay in touch
+1. User registers or logs in.
+2. Server validates credentials.
+3. Server returns JWT access and refresh tokens.
+4. Protected routes are guarded by JWT strategy.
+5. Role-protected routes require matching role metadata and guards.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+See detailed sequence diagram in:
+
+- `docs/auth-workflow.md`
+
+### RBAC
+
+Role checks are implemented using:
+
+- `@Roles(...)` decorator
+- `RolesGuard`
+- `JwtAuthGuard`
+
+Example behavior:
+
+- Post creation/update requires authenticated user.
+- Post deletion is restricted to admin.
+- Admin creation endpoint is admin-only.
+
+## Security Defaults
+
+- Password hashing with bcrypt.
+- JWT-based route protection.
+- Request throttling:
+  - Global throttling via `ThrottlerModule`.
+  - Additional throttling applied on login endpoint.
+- Input validation and payload sanitization via `ValidationPipe`.
+
+## API Overview
+
+### Auth
+
+- `POST /auth/register`
+- `POST /auth/login`
+- `POST /auth/refresh`
+- `GET /auth/profile` (JWT required)
+- `POST /auth/create-admin` (Admin role required)
+
+### Posts
+
+- `GET /posts`
+- `GET /posts/:id`
+- `POST /posts` (JWT required)
+- `PUT /posts/:id` (JWT + ownership/admin logic)
+- `DELETE /posts/:id` (Admin role required)
+
+## Database
+
+TypeORM is configured in `app.module.ts` with:
+
+- `type: postgres`
+- `url: process.env.DATABASE_URL`
+- `autoLoadEntities: true`
+- `synchronize: true` (development only)
+
+Production note:
+
+- Set `synchronize: false` in production and use migrations.
+
+## Development Notes
+
+- OAuth module files are present but currently not wired in `AppModule` imports.
+- Cache and pagination scaffolding exists but is intentionally paused.
+- Keep secrets out of source control.
+
+## What Makes This Template Useful
+
+This template gives you a realistic backend baseline with the parts most projects need first:
+
+- clean architecture
+- secure auth
+- role-based access control
+- strict request validation
+- database-backed CRUD
+- foundational abuse protection
+
+It is a strong base to extend with features like Swagger docs, migrations, refresh token rotation, audit logs, and CI pipelines.
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+MIT
