@@ -1,10 +1,10 @@
-# NestJS Real-World API Template
+# NestJS Real-World API Template 🚀
 
 A practical NestJS backend template with authentication, authorization, validation, PostgreSQL, and security-first defaults.
 
 This project is designed as a real-life starter for production-style APIs, not just a tutorial skeleton.
 
-## Highlights
+## Highlights ✨
 
 - Feature-based architecture using modules, controllers, and services.
 - Global validation with DTOs and class-validator.
@@ -15,7 +15,7 @@ This project is designed as a real-life starter for production-style APIs, not j
 - Route-level and auth-level throttling with NestJS Throttler.
 - Cookie parsing enabled for browser-based auth workflows.
 
-## Tech Stack
+## Tech Stack 🛠️
 
 - NestJS
 - TypeScript
@@ -26,20 +26,20 @@ This project is designed as a real-life starter for production-style APIs, not j
 - class-validator / class-transformer
 - pnpm
 
-## Current Scope
+## Current Scope 🎯
 
-Implemented and active:
+Implemented and active ✅:
 
 - Auth module (register, login, refresh, profile, admin creation)
 - Posts module (CRUD with ownership + role checks)
 - JWT guards and RBAC guards
 - Throttling and request validation
 
-Temporarily paused:
+Temporarily paused ⏸️:
 
 - Cache and pagination implementation (partial work exists, currently disabled)
 
-## Project Structure
+## Project Structure 🌳
 
 ```text
 .
@@ -70,15 +70,15 @@ Temporarily paused:
     └── auth-workflow.md
 ```
 
-## Getting Started
+## Getting Started ⚡
 
-### 1) Install dependencies
+### 1) Install dependencies 📦
 
 ```bash
 pnpm install
 ```
 
-### 2) Configure environment
+### 2) Configure environment 🔐
 
 Create a `.env` file in the project root using `trail.example.env` as reference.
 
@@ -99,7 +99,7 @@ GOOGLE_SECRET=optional-for-oauth
 GOOGLE_CALLBACK_URL=http://localhost:3000/auth/google/callback
 ```
 
-### 3) Run the app
+### 3) Run the app ▶️
 
 ```bash
 # dev (watch mode)
@@ -116,7 +116,7 @@ Server starts on:
 
 - `http://localhost:3000`
 
-## Available Scripts
+## Available Scripts 🧪
 
 - `pnpm run dev` - Start in watch mode.
 - `pnpm run start` - Start once.
@@ -128,7 +128,7 @@ Server starts on:
 - `pnpm run test:e2e` - End-to-end tests.
 - `pnpm run test:cov` - Test coverage.
 
-## Validation and DTO Strategy
+## Validation and DTO Strategy ✅
 
 Global `ValidationPipe` is enabled in `main.ts` with:
 
@@ -138,9 +138,9 @@ Global `ValidationPipe` is enabled in `main.ts` with:
 
 This enforces strict API payload contracts and automatically transforms incoming data to DTO classes.
 
-## Authentication and Authorization
+## Authentication and Authorization 🔑
 
-### Auth flow
+### Auth flow 🔄
 
 1. User registers or logs in.
 2. Server validates credentials.
@@ -152,7 +152,7 @@ See detailed sequence diagram in:
 
 - `docs/auth-workflow.md`
 
-### RBAC
+### RBAC 🛡️
 
 Role checks are implemented using:
 
@@ -166,7 +166,7 @@ Example behavior:
 - Post deletion is restricted to admin.
 - Admin creation endpoint is admin-only.
 
-## Security Defaults
+## Security Defaults 🔒
 
 - Password hashing with bcrypt.
 - JWT-based route protection.
@@ -175,9 +175,9 @@ Example behavior:
   - Additional throttling applied on login endpoint.
 - Input validation and payload sanitization via `ValidationPipe`.
 
-## API Overview
+## API Overview 📡
 
-### Auth
+### Auth 👤
 
 - `POST /auth/register`
 - `POST /auth/login`
@@ -185,7 +185,7 @@ Example behavior:
 - `GET /auth/profile` (JWT required)
 - `POST /auth/create-admin` (Admin role required)
 
-### Posts
+### Posts 📝
 
 - `GET /posts`
 - `GET /posts/:id`
@@ -193,7 +193,7 @@ Example behavior:
 - `PUT /posts/:id` (JWT + ownership/admin logic)
 - `DELETE /posts/:id` (Admin role required)
 
-## Database
+## Database 🗄️
 
 TypeORM is configured in `app.module.ts` with:
 
@@ -202,17 +202,17 @@ TypeORM is configured in `app.module.ts` with:
 - `autoLoadEntities: true`
 - `synchronize: true` (development only)
 
-Production note:
+Production note ⚠️:
 
 - Set `synchronize: false` in production and use migrations.
 
-## Development Notes
+## Development Notes 🧠
 
 - OAuth module files are present but currently not wired in `AppModule` imports.
 - Cache and pagination scaffolding exists but is intentionally paused.
 - Keep secrets out of source control.
 
-## What Makes This Template Useful
+## What Makes This Template Useful 💡
 
 This template gives you a realistic backend baseline with the parts most projects need first:
 
