@@ -10,6 +10,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { OAuthModule } from "./oauth/oauth.module";
 import { OAuthUsersModule } from "./oAuthUsers/users.module";
 import { AuthModule } from "./auth/auth.module";
+import { CacheModule } from "@nestjs/cache-manager";
 
 @Module({
   imports: [
@@ -37,6 +38,9 @@ import { AuthModule } from "./auth/auth.module";
           limit: 5,
         },
       ],
+    }),
+    CacheModule.register({
+      isGlobal: true,ttl : 30000,max : 100
     }),
 
     PostsModule,

@@ -1,5 +1,6 @@
 import {
   ForbiddenException,
+  Inject,
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
@@ -12,13 +13,24 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { CreatePostDto } from "./dto/create-post.dto";
 import { UpdatePostDto } from "./dto/update-post.dto";
 import { User, UserRole } from "src/auth/entities/user.entity";
+import { CACHE_MANAGER } from "@nestjs/cache-manager";
 
 @Injectable()
 export class PostsService {
+
+  // to keep track of cache keys related to post list - step 2
+  private postListCacheKeys : Set<string> = new Set(); 
+
   constructor(
     @InjectRepository(PostEntity)
     private readonly postRepository: Repository<PostEntity>,
+    //To interact with the cache manager instance, inject it to your class  - step 1
+    @Inject(CACHE_MANAGER) private cacheManager: Cache 
+
   ) {}
+
+  //for finding the posts the cache must be there
+//during creation & deletion the cache must be clear 
 
   private readonly postResp = {
     id: true,
@@ -102,3 +114,5 @@ export class PostsService {
     return { message: "Post removed successfully" };
   }
 }
+
+
