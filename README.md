@@ -42,31 +42,32 @@ Temporarily paused:
 ## Project Structure
 
 ```text
-src/
-  auth/
-    decorators/
-    dto/
-    entities/
-    guard/
-    strategies/
-    auth.controller.ts
-    auth.service.ts
-    auth.module.ts
-  posts/
-    dto/
-    entities/
-    interfaces/
-    pipes/
-    posts.controller.ts
-    posts.service.ts
-    posts.module.ts
-  oauth/
-  oAuthUsers/
-  config/
-  app.module.ts
-  main.ts
-docs/
-  auth-workflow.md
+.
+├── src
+│   ├── auth
+│   │   ├── decorators
+│   │   ├── dto
+│   │   ├── entities
+│   │   ├── guard
+│   │   ├── strategies
+│   │   ├── auth.controller.ts
+│   │   ├── auth.service.ts
+│   │   └── auth.module.ts
+│   ├── posts
+│   │   ├── dto
+│   │   ├── entities
+│   │   ├── interfaces
+│   │   ├── pipes
+│   │   ├── posts.controller.ts
+│   │   ├── posts.service.ts
+│   │   └── posts.module.ts
+│   ├── oauth
+│   ├── oAuthUsers
+│   ├── config
+│   ├── app.module.ts
+│   └── main.ts
+└── docs
+    └── auth-workflow.md
 ```
 
 ## Getting Started
@@ -224,6 +225,10 @@ This template gives you a realistic backend baseline with the parts most project
 
 It is a strong base to extend with features like Swagger docs, migrations, refresh token rotation, audit logs, and CI pipelines.
 
-## License
+## 👤 Author
 
-MIT
+[**Prigeesh**](https://github.com/Sai-guru)
+
+Arch Linux | TypeScript | NestJS | PostgreSQL
+
+Always fell free to discuss...
