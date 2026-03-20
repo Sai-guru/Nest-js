@@ -39,6 +39,14 @@ Temporarily paused ⏸️:
 
 - Cache and pagination implementation (partial work exists, currently disabled)
 
+## Important Notice ⚠️
+
+**Please read `alert.txt` before working on posts or shared modules.**
+
+**`alert.txt` clearly explains that cache/pagination work is paused and that `src/common` should be ignored for the active implementation.**
+
+**Reference:** `alert.txt`
+
 ## Project Structure 🌳
 
 ```text
