@@ -17,3 +17,6 @@ export class PaginationQueryDto {
   @Max(100, { message: "limit can't exceed 100 pages" })
   limit?: number = 10;
 }
+
+
+// alert : Stopped the cache & pagination implementation...

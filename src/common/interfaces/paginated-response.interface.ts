@@ -14,3 +14,5 @@ export interface PaginatedResponse<T> {
     items: T[];
     meta: PaginationMeta;
 }
+
+// alert : Stopped the cache & pagination implementation...

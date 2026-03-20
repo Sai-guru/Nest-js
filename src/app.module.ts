@@ -39,9 +39,11 @@ import { CacheModule } from "@nestjs/cache-manager";
         },
       ],
     }),
-    CacheModule.register({
-      isGlobal: true,ttl : 30000,max : 100
-    }),
+
+    // CacheModule.register({
+    //   isGlobal: true,ttl : 30000,max : 100
+    // }),
+    // alert : Stopped the cache & pagination implementation...
 
     PostsModule,
 

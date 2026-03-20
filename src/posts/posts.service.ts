@@ -19,18 +19,22 @@ import { CACHE_MANAGER } from "@nestjs/cache-manager";
 export class PostsService {
 
   // to keep track of cache keys related to post list - step 2
-  private postListCacheKeys : Set<string> = new Set(); 
+  // private postListCacheKeys : Set<string> = new Set(); 
 
   constructor(
     @InjectRepository(PostEntity)
     private readonly postRepository: Repository<PostEntity>,
+
+     // alert : Stopped the cache & pagination implementation...
+     
     //To interact with the cache manager instance, inject it to your class  - step 1
-    @Inject(CACHE_MANAGER) private cacheManager: Cache 
+    // @Inject(CACHE_MANAGER) private cacheManager: Cache 
 
   ) {}
 
   //for finding the posts the cache must be there
-//during creation & deletion the cache must be clear 
+  //during creation & deletion the cache must be clear 
+   // alert : Stopped the cache & pagination implementation...
 
   private readonly postResp = {
     id: true,

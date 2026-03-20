@@ -1,0 +1,8 @@
+Cache and pagination implementation is currently paused.
+
+For now, please ignore the `src/common` folder, because it is not used in the active implementation.
+
+
+There is partial implementation starting in `posts.service.ts`, but it is currently disabled and not in use.
+
+So this will not affect the current workflow and you can continue working on the features without worrying about the cache and pagination for now.
