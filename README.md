@@ -124,6 +124,35 @@ Server starts on:
 
 - `http://localhost:3000`
 
+### 4) Run with Docker Compose 🐳
+
+If you want to run without installing Node.js or pnpm locally, use Docker Compose.
+
+Prerequisites:
+
+- Docker Engine
+- Docker Compose plugin
+
+Steps:
+
+```bash
+# from project root
+docker compose up --build -d nestjs-dev
+docker compose logs -f nestjs-dev
+```
+
+Stop and clean up:
+
+```bash
+docker compose down
+```
+
+Notes:
+
+- `docker compose up --build -d nestjs-dev` builds the image, creates the container, and starts it.
+- The service reads environment values from `.env` via `env_file` in `docker-compose.yml`.
+- Teammates can clone this repository, create `.env` from `trail.example.env`, and run the same Compose commands.
+
 ## Available Scripts 🧪
 
 - `pnpm run dev` - Start in watch mode.
