@@ -17,11 +17,11 @@ import { Post as PostEntity } from "./entities/posts.entity";
 import { CreatePostDto } from "./dto/create-post.dto";
 import { UpdatePostDto } from "./dto/update-post.dto";
 import { PostExistsPipe } from "./pipes/post-exists.pipes";
-import { JwtAuthGuard } from "src/auth/guard/jwt-auth.guard";
-import { CurrentUser } from "src/auth/decorators/current-user.decorators";
-import { Roles } from "src/auth/decorators/roles.decorators";
-import { RolesGuard } from "src/auth/guard/roles-guard";
-import { UserRole } from "src/auth/entities/user.entity";
+import { JwtAuthGuard } from "../auth/guard/jwt-auth.guard";
+import { CurrentUser } from "../auth/decorators/current-user.decorators";
+import { Roles } from "../auth/decorators/roles.decorators";
+import { RolesGuard } from "../auth/guard/roles-guard";
+import { UserRole } from "../auth/entities/user.entity";
 
 @Controller("posts")
 export class PostsController {

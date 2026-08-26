@@ -12,7 +12,7 @@ import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CreatePostDto } from "./dto/create-post.dto";
 import { UpdatePostDto } from "./dto/update-post.dto";
-import { User, UserRole } from "src/auth/entities/user.entity";
+import { User, UserRole } from "../auth/entities/user.entity";
 import { CACHE_MANAGER } from "@nestjs/cache-manager";
 
 @Injectable()

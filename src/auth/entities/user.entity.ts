@@ -1,4 +1,4 @@
-import { Post } from "src/posts/entities/posts.entity";
+import { Post } from "../../posts/entities/posts.entity";
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 export enum UserRole {

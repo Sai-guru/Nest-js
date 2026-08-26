@@ -13,20 +13,19 @@
     "target": "ES2023",
     "sourceMap": true,
     "outDir": "./dist",
-    // "baseUrl": "./",
-    // "ignoreDeprecations": "6.0",
-    // Source - https://stackoverflow.com/a/79956323
-// Posted by Mohammad Ali, modified by community. See post 'Timeline' for change history
-// Retrieved 2026-08-26, License - CC BY-SA 4.0
-"paths": {
-   "*": ["./src/*"]
-},
-    "incremental": true,
+    "rootDir": "./src",
+    "paths": {
+       "@/*": ["./src/*"],
+       "src/*": ["./src/*"]
+    },
+    "incremental": false,
     "skipLibCheck": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
 }
